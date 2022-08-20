@@ -8,8 +8,6 @@ using System;
 using System.IO;
 using System.Net;
 using System.Text;
-using System.Threading;
-using System.Web.Http.Filters;
 using ActionFilterAttribute = Microsoft.AspNetCore.Mvc.Filters.ActionFilterAttribute;
 using IExceptionFilter = Microsoft.AspNetCore.Mvc.Filters.IExceptionFilter;
 
@@ -96,7 +94,6 @@ namespace employee.service.Filters
                 {
                     var responseBody = stream.ReadToEnd();
                     responseBody = responseBody.Replace(Environment.NewLine, "");
-                    //Log.Error($"@timestamp: {DateTime.Now},@site: {"core-service"}, @level: error, @threadid: {Thread.CurrentThread.ManagedThreadId}, @message: response -{responseBody},  requestUrl: {request.Path},requestMethod: {requestMethod}, responseCode: { response.StatusCode}");
                     Log.Error(context.Exception.Message);
                 }
             }
